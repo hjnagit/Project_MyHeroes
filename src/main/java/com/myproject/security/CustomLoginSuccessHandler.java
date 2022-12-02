@@ -51,7 +51,7 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler{
 		// 비회원/권한이 없는 회원 로그인성공!
 		log.info("권한 없는 로그인 성공!(비회원)");
 		//response.sendRedirect("/");
-		response.sendRedirect("/sample/all");
+		response.sendRedirect("/");
 	}
 
 

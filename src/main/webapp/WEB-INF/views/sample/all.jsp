@@ -8,5 +8,6 @@
 </head>
 <body>
 	<h1> all.jsp 페이지 호출 (모든유저-로그인X)</h1>
+	<a href="/customLogout"> 로그아웃 </a>
 </body>
 </html>

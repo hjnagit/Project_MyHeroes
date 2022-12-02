@@ -9,10 +9,11 @@
 </style>
   <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark" style="border:1px solid white;">
     <div class="col-md-6 px-0" style="margin: auto; height: 100px; width: 1000px;">
+    	
       <h1 class="display-4 font-italic" style="margin-left: 60px; font-size: 4em;">히어로즈 팬들 모임</h1>
     </div>
   </div>
-
+<h4>id : ${_csrf.token }</h4>
   <div class="row mb-2">
     <div class="col-md-6">
       <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
