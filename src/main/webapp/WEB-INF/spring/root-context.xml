@@ -21,5 +21,30 @@
 	              value="1234" />       
 	
 	</bean>	
+	
+	<!-- 디비연결,MyBatis,mapper  SqlSessionFactory -->
+	<bean id="sqlSessionFactory" 
+	      class="org.mybatis.spring.SqlSessionFactoryBean">
+	   <property name="dataSource" ref="dataSource"/>
+	   <property name="configLocation"  
+	             value="classpath:/mybatis-config.xml"/>
+	   <property name="mapperLocations"
+	             value="classpath:mappers/**/*Mapper.xml" />        
+	</bean>	
+	<!-- 디비연결,MyBatis,mapper  SqlSessionFactory -->
+	
+	<!-- 디비연결,MyBatis,mapper,자원해제  SqlSessionTemplate -->
+	<bean id="sqlSession" 
+	      class="org.mybatis.spring.SqlSessionTemplate" 
+	      destroy-method="clearCache">	      
+	  <constructor-arg name="sqlSessionFactory" 
+	                   ref="sqlSessionFactory"/>
+	</bean>	
+	<!-- 디비연결,MyBatis,mapper,자원해제  SqlSessionTemplate -->
+	
+	<!-- DAO 패키지 -->
+	<context:component-scan base-package="com.myproject.persistence"/>
+	<!-- Service 패키지 -->
+	<context:component-scan base-package="com.myproject.service"/>
 			
 </beans>

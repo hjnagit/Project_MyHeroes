@@ -6,8 +6,8 @@
 		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
 	
 	<!-- 접근권한 처리객체 -->
-	<bean id="customAccessDenied" 
-		  class="com.myproject.security.CustomAccessDeniedHandler"/>
+<!-- 	<bean id="customAccessDenied"  -->
+<!-- 		  class="com.myproject.security.CustomAccessDeniedHandler"/> -->
 		  
 	<!-- 로그인 성공처리 객체 -->
 	<bean id="customLoginSuccess" 
@@ -36,7 +36,7 @@
 		<security:logout logout-url="/customLogout" invalidate-session="true"/>
 		
 <!-- 		<security:access-denied-handler error-page="/accessError"/> -->
-		<security:access-denied-handler ref="customAccessDenied"/>
+<!-- 		<security:access-denied-handler ref="customAccessDenied"/> -->
 		
 	</security:http>
 

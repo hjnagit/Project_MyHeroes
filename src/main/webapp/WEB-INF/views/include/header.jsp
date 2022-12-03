@@ -4,9 +4,16 @@
 <%@ page session="false" %>
 <html>
 <head>
+
+	<meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>
+<!-- default header name is X-CSRF-TOKEN -->
+<meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>
+
 	<title>MyHeroes</title>
 <link href="${pageContext.request.contextPath }/resources/css/bootstrap.min.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath }/resources/css/blog.css" rel="stylesheet">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
 
 </head>
@@ -17,11 +24,11 @@
       <div class="col-4 pt-1">
       </div>
       <div class="col-4 text-center">
-        <a class="blog-header-logo text-dark" href="#">HEROES</a>
+        <a class="blog-header-logo text-dark" href="/">HEROES</a>
       </div>
       <div class="col-4 d-flex justify-content-end align-items-center" style="marmargin-right:50px;">
         
-        <a class="btn btn-sm btn-outline-secondary" href="/heroes/customLogin">Sign up</a>
+        <a class="btn btn-sm btn-outline-secondary" href="/customLogin">Sign up</a>
       </div>
     </div>
   </header>
@@ -31,9 +38,11 @@
       <a class="p-2 text-muted" href="#"></a>
       <a class="p-2 text-muted" href="#">히어로즈</a>
       <a class="p-2 text-muted" href="#">게시판</a>
-      <a class="p-2 text-muted" href="#">경기보기</a>
+      <a class="p-2 text-muted" href="/with/games">경기보기</a>
       <a class="p-2 text-muted" href="#"></a>
     </nav>
   </div>
 <hr>
+
+
 
