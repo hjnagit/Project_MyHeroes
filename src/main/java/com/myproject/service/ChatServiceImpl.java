@@ -1,5 +1,7 @@
 package com.myproject.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.slf4j.Logger;
@@ -21,6 +23,11 @@ public class ChatServiceImpl implements ChatService {
 	@Override
 	public void insert(ChatVO vo) throws Exception {
 		dao.insert(vo);
+	}
+
+	@Override
+	public List<ChatVO> chatAll() throws Exception {
+		return dao.chatAll();
 	}
 
 }

@@ -11,6 +11,13 @@
 		values(#{chat_content}, #{user_id})
 	</insert>
 	
-
+	<!-- chat 출력하기 -->
+	<select id="chatAll" resultType="com.myproject.heroes.domain.ChatVO">
+		select *
+		from (select * from game_chat order by chat_bno desc 
+				limit 0, 10) a
+		order by a.chat_bno
+	</select>
+	
 	
 </mapper>

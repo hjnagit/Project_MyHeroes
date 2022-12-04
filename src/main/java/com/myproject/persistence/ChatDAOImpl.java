@@ -1,5 +1,7 @@
 package com.myproject.persistence;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -23,6 +25,12 @@ public class ChatDAOImpl implements ChatDAO{
 	@Override
 	public void insert(ChatVO vo) throws Exception {
 		sqlSession.insert(NAMESPACE+".insert", vo);
+	}
+
+
+	@Override
+	public List<ChatVO> chatAll() throws Exception {
+		return sqlSession.selectList(NAMESPACE+".chatAll");
 	}
 
 }
