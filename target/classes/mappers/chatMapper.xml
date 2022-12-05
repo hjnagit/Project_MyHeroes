@@ -15,9 +15,19 @@
 	<select id="chatAll" resultType="com.myproject.heroes.domain.ChatVO">
 		select *
 		from (select * from game_chat order by chat_bno desc 
-				limit 0, 10) a
+				limit 0, 20) a
 		order by a.chat_bno
 	</select>
 	
+	<!-- chatUP 출력 -->
+	<select id="chatUP" resultType="com.myproject.heroes.domain.ChatVO">
+	<![CDATA[
+		select * 
+		from game_chat 
+		where chat_bno <= #{chat_bno} 
+		and chat_bno > #{chat_bno}-10 
+		order by chat_bno
+	]]>
+	</select>
 	
 </mapper>

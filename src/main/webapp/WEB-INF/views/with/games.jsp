@@ -46,9 +46,9 @@ $(document).ready(function() {
 	 				success: function(data) {
 	 		 			//alert('성공'+data);
 	 		 			
+	 		 				$('#get').empty();
 	 		 			$(data).each(function(idx, item){
-	 		 				$('#gat').html("");
-	 						$('#get').append(item.chat_bno+"/"+item.user_id+"/"+item.chat_regdate+"/<br>"+item.chat_content+"<br>");
+	 						$('#get').append(item.chat_bno+"/"+item.user_id+"/"+item.chat_regdate+"/<h4>"+item.chat_content+"</h4>");
 	 						
 	 						
 	 					});
@@ -99,6 +99,7 @@ $(document).ready(function() {
 		    	alert('실패');
 		    }
 		});
+		$(this).unbind();
 	}
 	
 });
@@ -124,16 +125,95 @@ $(document).ready(function() {
 // }
 // 	var objDiv = document.getElementById("get");
 // 	objDiv.scrollTop = objDiv.scrollHeight;
-	$('#get').scrollTop($('#get')[0].scrollHeight);
-</script>
 
+
+function enterkey() {
+	if (window.event.keyCode == 13) {
+// 		var fr1 = $('#fr').serialize;
+		
+		var txt = {
+				chat_content : $('#chat_content').val(),
+				user_id : $('#user_id').val(),
+			};
+		
+ 		//alert('클릭'+txt);
+		console.log(txt);
+		
+		$.ajax({
+	 		url  : "/with/insertAjax",
+// 	 		beforeSend: function(xhr){
+// 	 	        xhr.setRequestHeader(header, token);
+// 	 	        alert("내가 실행된다");
+// 	 	    },
+	 		type : "get",
+// 	 		contentType: "application/json",
+// 			data: JSON.stringify(txt),
+			data: txt,
+			dataType: "text",
+	 		success 	: function(data) {
+	 			//alert('성공');
+	 			$.ajax({
+	 				url  : "/ajax/chatAll",
+	 				type : "get",
+	 				dataType: "JSON",
+	 				success: function(data) {
+	 		 			//alert('성공'+data);
+	 		 			
+	 		 				$('#get').empty();
+	 		 			$(data).each(function(idx, item){
+	 						$('#get').append(item.chat_bno+"/"+item.user_id+"/"+item.chat_regdate+"/<h4>"+item.chat_content+"</h4>");
+	 						
+	 						
+	 					});
+	 					
+	 		 		},
+	 		 		error: function(request,status) {
+	 			    	console.log("request.status : "+ request.status);
+	 			    	console.log("request.responseText : "+ request.responseText);
+	 			    	//console.log(error);
+	 			    	alert('실패');
+	 			    }
+	 			});
+				
+	 		},
+	 		error		: function(request,status) {
+		    	console.log("request.status : "+ request.status);
+		    	console.log("request.responseText : "+ request.responseText);
+		    	//console.log(error);
+		    	alert('디비저장실패');
+		    }
+			
+		});//ajax
+    }
+}
+
+enterkey.init();
+
+</script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/jquery-ui.min.js"></script>
+<script>
+
+//	$('#get').scrollTop($('#get')[0].scrollHeight);
+	// 스크롤 이벤트 최초 발생
+	$(window).scroll(function(){
+		// 현재스크롤의 위치가 화면의 보이는 위치조다 크다면
+		if ($(window).scrollTop() >= $(document).height() - $(window).height()){
+			alert("aaaaa");
+			
+			
+		}
+	$(window).scrollTop($(window)[0].scrollHeight);
+	});
+	
+</script>
 
 <h1>나랑 경기 같이 볼래...?</h1>
 <fieldset>
 <!-- <div id="get"></div> -->
 </fieldset>
 
-<div id="get" class="get" style="height: 300px; overflow: scroll"> 
+<div id="get"> 
+<!-- <div id="get" class="get" style="height: 300px; overflow: overlay">  -->
 <!-- <div class="scroll" style="height: 300px; overflow: overlay">  -->
 <!--   <div id="get"></div> -->
 <!--   <div style="height: 200px; background: orange">orange</div> -->
@@ -142,8 +222,8 @@ $(document).ready(function() {
 <form id="fr">
 <input type="text" name="chat_content" id="chat_content" placeholder="나도 글쓸래" required="required" autofocus="autofocus">
 <input type="hidden" name="user_id" id="user_id" value="글쓴이">
-<button type="submit" id="btnInsert">등록</button>
 </form>
+<button type="submit" id="btnInsert">등록</button>
 
 
 

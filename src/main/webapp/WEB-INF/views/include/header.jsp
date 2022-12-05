@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
-<html>
+<!DOCTYPE html>
 <head>
 
 	<meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>

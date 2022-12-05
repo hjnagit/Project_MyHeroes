@@ -32,4 +32,14 @@ public class AjaxController {
 		return new ResponseEntity<List<ChatVO>>(service.chatAll(),HttpStatus.OK);
 	}
 	
+	@GetMapping("/chatUP")
+	public List<ChatVO> chatUP(ChatVO vo) throws Exception{
+		log.info("chatUP 왔음다 슝슝");
+		
+		Integer bnoUP = vo.getChat_bno();
+		
+		return null;
+	}
+	
+	
 }
