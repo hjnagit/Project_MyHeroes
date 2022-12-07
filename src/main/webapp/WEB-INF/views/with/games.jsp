@@ -46,12 +46,13 @@ $(document).ready(function() {
 	 				success: function(data) {
 	 		 			//alert('성공'+data);
 	 		 			
-	 		 				$('#get').empty();
+	 		 			$('#get').empty();
 	 		 			$(data).each(function(idx, item){
 	 						$('#get').append(item.chat_bno+"/"+item.user_id+"/"+item.chat_regdate+"/<h4>"+item.chat_content+"</h4>");
 	 						
 	 						
 	 					});
+	 		 			$('#chat_content').val('');
 	 					
 	 		 		},
 	 		 		error: function(request,status) {
@@ -134,7 +135,7 @@ function enterkey() {
 		var txt = {
 				chat_content : $('#chat_content').val(),
 				user_id : $('#user_id').val(),
-			};
+		};
 		
  		//alert('클릭'+txt);
 		console.log(txt);
@@ -162,8 +163,6 @@ function enterkey() {
 	 		 				$('#get').empty();
 	 		 			$(data).each(function(idx, item){
 	 						$('#get').append(item.chat_bno+"/"+item.user_id+"/"+item.chat_regdate+"/<h4>"+item.chat_content+"</h4>");
-	 						
-	 						
 	 					});
 	 					
 	 		 		},
