@@ -134,7 +134,7 @@ function enterkey() {
 		
 		var txt = {
 				chat_content : $('#chat_content').val(),
-				user_id : $('#user_id').val(),
+				user_id : $('#user_id').val(), 
 		};
 		
  		//alert('클릭'+txt);
