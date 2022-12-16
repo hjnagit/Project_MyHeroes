@@ -125,7 +125,7 @@ $(document).ready(function() {
 // 	});
 // }
 // 	var objDiv = document.getElementById("get");
-// 	objDiv.scrollTop = objDiv.scrollHeight;
+// 	objDiv.scrollTop = objDiv.scrollHeight; 
 
       
 function enterkey() {  
